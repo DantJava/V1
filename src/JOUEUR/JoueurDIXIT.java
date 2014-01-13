@@ -18,6 +18,7 @@ import VIEW.VueIdentification;
 public class JoueurDIXIT extends Thread{
 	
     private static int port = 1001;
+    static boolean pretJouer = false;
     private static String host = "localhost";
     private Socket serveurDIXIT;
     private String nom;
@@ -30,7 +31,7 @@ public class JoueurDIXIT extends Thread{
     
     //Threads
     private ThreadMessage thread1;
-    private ThreadMessage thread2;
+    private ThreadFonction thread2;
     
     public JoueurDIXIT(String nom) throws IOException, InterruptedException{
     	this.nom = nom;
@@ -40,13 +41,16 @@ public class JoueurDIXIT extends Thread{
         LireServeur = new BufferedReader(new InputStreamReader(serveurDIXIT.getInputStream())); 
 		LireClient = new BufferedReader(new InputStreamReader(System.in));
 		thread1 = new ThreadMessage(AffichageServeur, LireClient, "CLIENT : ");
-		thread2 = new ThreadMessage(AffichageClient, LireServeur, "SERVEUR : ");
+		thread2 = new ThreadFonction(AffichageClient, LireServeur, "SERVEUR : ");
     }
  
 	public void initialisation() throws IOException {
 		   
 		thread2.start();
 		thread1.start();
+	}
+	public void partie(){
+		while(pretJouer == false){}
 	}
 
 }

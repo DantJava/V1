@@ -116,7 +116,6 @@ public class VueIdentification extends JPanel implements ActionListener {
 					try {
 						j = new JoueurDIXIT(loginText.getText());
 						System.out.println("Connexion effectuée");
-						fenetre.setContentPane(new JPanel());
 						j.initialisation();
 					} catch (IOException e) {
 						System.out.println("Connexion refusée : Serveur non ouvert");
@@ -124,7 +123,12 @@ public class VueIdentification extends JPanel implements ActionListener {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-		    	}		
+		    	}
+				fenetre.getContentPane().removeAll();
+				fenetre.setContentPane(new JPanel());
+				fenetre.getContentPane().repaint();
+				fenetre.getContentPane().revalidate();
+				j.partie();
 				 
 			}
 		}
