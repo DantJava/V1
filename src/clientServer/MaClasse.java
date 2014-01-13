@@ -1,4 +1,4 @@
-package testsvn2;
+package clientServer;
 
 public class MaClasse {
 
