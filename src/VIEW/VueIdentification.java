@@ -27,7 +27,7 @@ public class VueIdentification extends JPanel implements ActionListener {
 	private JButton inscription;
 	private boolean ok;
 
-	public VueIdentification(JFrame fenetre) {
+	public VueIdentification(JFrame fenetre) {     
 
 		this.fenetre = fenetre;
 		this.setLayout(new BorderLayout(250, 220));
@@ -111,25 +111,29 @@ public class VueIdentification extends JPanel implements ActionListener {
 			if(estInscrit(loginText.getText(), mdpText.getPassword())){
 				System.out.println("OK");
 				JoueurDIXIT j = null;
-				while(j == null)
-		    	{
+	// modification du joueur null 
+//				while(j == null)
+//		    	{
 					try {
 						j = new JoueurDIXIT(loginText.getText());
-						System.out.println("Connexion effectuée");
+						System.out.println("Connexion effectuï¿½e");
 						j.initialisation();
 					} catch (IOException e) {
-						System.out.println("Connexion refusée : Serveur non ouvert");
+						System.out.println("Connexion refusï¿½e : Serveur non ouvert");
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-		    	}
-				fenetre.getContentPane().removeAll();
-				fenetre.setContentPane(new JPanel());
+//		    	}
+
+//				j.partie();
+					fenetre.getContentPane().removeAll();
+				VueAttente vueAttente = new VueAttente(fenetre, j);
+				fenetre.setContentPane(vueAttente);
+			
 				fenetre.getContentPane().repaint();
 				fenetre.getContentPane().revalidate();
-				j.partie();
-				 
+			
 			}
 		}
 		if (arg0.getSource() == inscription) {

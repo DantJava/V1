@@ -32,4 +32,8 @@ public class ThreadFonction extends Thread{
 		}
 		 
 	}
+
+	public String getMessage() {
+		return message;
+	}
 }

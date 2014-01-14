@@ -18,7 +18,7 @@ import VIEW.VueIdentification;
 public class JoueurDIXIT extends Thread{
 	
     private static int port = 1001;
-    static boolean pretJouer = false;
+    public static boolean pretJouer = false;
     private static String host = "localhost";
     private Socket serveurDIXIT;
     private String nom;
@@ -53,4 +53,13 @@ public class JoueurDIXIT extends Thread{
 		while(pretJouer == false){}
 	}
 
+	public ThreadMessage getThread1() {
+		return thread1;
+	}
+
+	public ThreadFonction getThread2() {
+		return thread2;
+	}
+
+	
 }

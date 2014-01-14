@@ -16,7 +16,7 @@ import PARTIE.Partie;
 
 
  
-class ServeurDIXIT extends Thread{
+public class ServeurDIXIT extends Thread{
 	
 	public static final int NB_JOUEUR = 4;
     private static int port = 1001; 
