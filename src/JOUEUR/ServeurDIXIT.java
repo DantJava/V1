@@ -3,12 +3,16 @@ package JOUEUR;
 import java.net.ServerSocket;
 import java.net.Socket;
  
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
+import PARTIE.Joueur;
+import PARTIE.Partie;
 
 
  
@@ -21,7 +25,8 @@ class ServeurDIXIT extends Thread{
     private List <Socket> listClient;
     private List <ThreadClient> poolThread;
     private ThreadPartie partie;
-
+    private List<Partie> listPartie;
+    private List<Joueur> listJoueur;
       public ServeurDIXIT() throws IOException{
 
     	  // Affectation du socket serveur
@@ -29,7 +34,8 @@ class ServeurDIXIT extends Thread{
             listClient = new LinkedList<Socket>();
             poolThread = new LinkedList<ThreadClient>();
             //partie = new ThreadPartie();
-            
+            listPartie = new ArrayList<Partie>();
+            listJoueur = new ArrayList<Joueur>();
       
       }
       public void connexion() throws IOException{
@@ -58,7 +64,7 @@ class ServeurDIXIT extends Thread{
 	    	ThreadNew.start();
 	    	poolThread.add(ThreadNew); 
     	  }
-    	  
+    	  listPartie.add(new Partie(listClient,listJoueur));
 
     }
       
