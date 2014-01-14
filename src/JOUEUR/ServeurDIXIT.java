@@ -65,6 +65,7 @@ class ServeurDIXIT extends Thread{
 	    	poolThread.add(ThreadNew); 
     	  }
     	  listPartie.add(new Partie(listClient,listJoueur));
+    	  listPartie.get(0).start();
 
     }
       
@@ -82,6 +83,7 @@ class ServeurDIXIT extends Thread{
 
     }
 	public static void main (String[] args) throws IOException {
+		System.out.println("Serveur en ligne");
 		ServeurDIXIT s = new ServeurDIXIT();
 		s.connexion();
 		
