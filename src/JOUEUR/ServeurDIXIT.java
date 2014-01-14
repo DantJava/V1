@@ -25,7 +25,6 @@ class ServeurDIXIT extends Thread{
     private List <Socket> listClient;
     private List <ThreadClient> poolThread;
     private ThreadPartie partie;
-    private List<Partie> listPartie;
     private List<Joueur> listJoueur;
       public ServeurDIXIT() throws IOException{
 
@@ -34,13 +33,12 @@ class ServeurDIXIT extends Thread{
             listClient = new LinkedList<Socket>();
             poolThread = new LinkedList<ThreadClient>();
             //partie = new ThreadPartie();
-            listPartie = new ArrayList<Partie>();
-            listJoueur = new ArrayList<Joueur>();
+            
       
       }
       public void connexion() throws IOException{
     	  //Mise en route des Threads
-    	  
+    	  listJoueur = new ArrayList<Joueur>();
     	  while(listClient.size() < NB_JOUEUR) {
     		  
 	    	Socket ClientNew = serveur.accept();
@@ -64,8 +62,9 @@ class ServeurDIXIT extends Thread{
 	    	ThreadNew.start();
 	    	poolThread.add(ThreadNew); 
     	  }
-    	  listPartie.add(new Partie(listClient,listJoueur));
-    	  listPartie.get(0).start();
+    	  
+    	  Partie partie=new Partie(listClient,listJoueur);
+    	  partie.start();
 
     }
       
@@ -82,10 +81,12 @@ class ServeurDIXIT extends Thread{
     	  return null;
 
     }
+      
 	public static void main (String[] args) throws IOException {
 		System.out.println("Serveur en ligne");
 		ServeurDIXIT s = new ServeurDIXIT();
-		s.connexion();
-		
+		while(true){
+			s.connexion();
+		}		
 	}
 }
