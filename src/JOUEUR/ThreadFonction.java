@@ -20,6 +20,11 @@ public class ThreadFonction extends Thread{
 	
 	public void run(){
 		 try {
+//			 VueAttente a =
+//			 while(fenetre.GETCONTENTPANE.getvalLabel != ServeurDIXIT.NB_JOUEUR )
+//				 a = in.readLine();
+//			 	setLabel(a);
+			 	
 			while(true){
 			message = in.readLine();
 			

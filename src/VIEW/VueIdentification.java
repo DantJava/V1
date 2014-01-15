@@ -137,9 +137,19 @@ public class VueIdentification extends JPanel implements ActionListener {
 			}
 		}
 		if (arg0.getSource() == inscription) {
-				
+			fenetre.getContentPane().removeAll();
+			VueInscription vueInscription = new VueInscription(fenetre);
+			fenetre.setContentPane(vueInscription);
+		
+			fenetre.getContentPane().repaint();
+			fenetre.getContentPane().revalidate();	
 		}
 
 	}
+
+	public JFrame getFenetre() {
+		return fenetre;
+	}
+	
 
 }

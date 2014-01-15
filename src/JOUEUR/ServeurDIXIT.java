@@ -19,7 +19,7 @@ import PARTIE.Partie;
 public class ServeurDIXIT extends Thread{
 	
 	public static final int NB_JOUEUR = 4;
-    private static int port = 1001; 
+    private static int port = 23009; 
     private ServerSocket serveur = null;
     
     private List <Socket> listClient;

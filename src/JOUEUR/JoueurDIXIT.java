@@ -17,7 +17,7 @@ import VIEW.VueIdentification;
  
 public class JoueurDIXIT extends Thread{
 	
-    private static int port = 1001;
+    private static int port = 23009;
     public static boolean pretJouer = false;
     private static String host = "localhost";
     private Socket serveurDIXIT;
